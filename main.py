@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from src.eda import show_overview, boxplot
+from src.eda import eda
 from src.feateng import create_target
 from src.preprocessing import normalize
 
@@ -11,11 +11,6 @@ def main():
     data = data.set_index('Date')
     #Add target and normalize data.
     data = normalize(create_target(data))
-    #Show overview
-    show_overview(data) 
-    #Show boxplot
-    boxplot(data)
-    plt.show()
 
 
 

@@ -1,4 +1,4 @@
-import pandas as pd
+mport pandas as pd
 import matplotlib.pyplot as plt
 
 
@@ -21,3 +21,23 @@ def boxplot(data, columns=[]):
         data.plot.box()
     else:
         data[columns].plot.box()
+    plt.show()
+
+
+"""
+Create lineplot of target through time.
+"""
+def target_lineplot(data):
+    data['Target'].plot()
+    plt.show()
+
+
+
+"""
+Invoke all eda
+"""
+def eda(data, columns=[]):
+    show_overview(data)
+    boxplot(data, columns)
+    target_lineplot(data)
+
