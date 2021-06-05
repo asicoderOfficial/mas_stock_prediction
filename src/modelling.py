@@ -5,6 +5,7 @@ from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import RepeatedKFold
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.svm import SVR
+from sklearn.metrics import mean_squared_error
 import numpy as np
 
 
@@ -22,23 +23,52 @@ def evaluate(model, model_name, x, y):
     res.to_csv('results.csv')
 
 
-def xgb(x,y):
+"""
+Supervised learning algorithms.
+"""
+def xgb(x_train,y_train, x_test, y_test):
     model = XGBRegressor()
-    evaluate(model, 'XGBRegressor', x, y)
+    model.fit(x_train, y_train)
+    predictions = model.predict(x_test)
+    print(mean_squared_error(y_test, predictions))
+    predictions = pd.DataFrame(predictions)
+    predictions.to_csv('XGBPredictions.csv')
+    return predictions
     
 
-def rf(x,y):
+def rf(x_train,y_train, x_test, y_test):
     model = RandomForestRegressor()
-    evaluate(model, 'RandomForestRegressor', x, y)
+    model.fit(x_train, y_train)
+    predictions = model.predict(x_test)
+    print(mean_squared_error(y_test, predictions))
+    predictions = pd.DataFrame(predictions)
+    predictions.to_csv('RFPredictions.csv')
+    return predictions
 
 
-def svr(x,y):
+def svr(x_train,y_train, x_test, y_test):
     model = SVR()
-    evaluate(model, 'SVR', x, y)
+    model.fit(x_train, y_train)
+    predictions = model.predict(x_test)
+    print(mean_squared_error(y_test, predictions))
+    predictions = pd.DataFrame(predictions)
+    predictions.to_csv('SVRPredictions.csv')
+    return predictions
 
 
-def knnr(x,y):
+def knnr(x_train,y_train, x_test, y_test):
     model = KNeighborsRegressor()
-    evaluate(model, 'KNNR', x, y)
+    model.fit(x_train, y_train)
+    predictions = model.predict(x_test)
+    print(mean_squared_error(y_test, predictions))
+    predictions = pd.DataFrame(predictions)
+    predictions.to_csv('KNNRPredictions.csv')
+    return predictions
 
+
+
+"""
+Reinforcement learning algorithms.
+"""
+def rl(
 
