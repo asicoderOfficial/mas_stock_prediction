@@ -56,6 +56,3 @@ class Yahoo:
         if 'price_type' in kwargs:
             self.price_type = kwargs['price_type']
 
-
-a = Yahoo('AAPL')
-print(a.ticker)
